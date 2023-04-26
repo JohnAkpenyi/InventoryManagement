@@ -1,0 +1,21 @@
+const form = document.getElementById('addGoodForm');
+const alertMsg = document.getElementById('alertMsg');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  if (form.checkValidity()) {
+    // all fields are filled in, submit form
+    form.submit();
+  } else {
+    // some fields are missing, show warning message
+    alertMsg.classList.remove('d-none');
+  }
+});
+
+// hide the warning message when any input field is changed
+const inputs = document.querySelectorAll('input');
+inputs.forEach(function(input) {
+  input.addEventListener('input', function() {
+    alertMsg.classList.add('d-none');
+  });
+});

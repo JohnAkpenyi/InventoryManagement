@@ -34,17 +34,13 @@ public class Good {
     @Setter
     private BigDecimal weight_per_unit;
 
-    @Getter
-    @Setter
-    private BigDecimal total_weight;
-
     //Lazy is good for performance
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "inventory_id", nullable = false)
-    @JsonIncludeProperties(value = {"inventory_id"})
-    @Getter
-    @Setter
-    private Inventory inventory;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "inventory_id", nullable = false)
+//    @JsonIncludeProperties(value = {"inventory_id"})
+//    @Getter
+//    @Setter
+//    private Inventory inventory;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "section_id", nullable = false)

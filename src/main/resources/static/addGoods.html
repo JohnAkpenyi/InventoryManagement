@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/addPages.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="row w-100">
+            <div class="col-4 d-flex justify-content-start">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="col-4 d-flex justify-content-center">
+                <span class="navbar-brand mb-0 h1">Goods</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div id="alertMsg" class="alert alert-danger d-none" role="alert">
+                Please fill in all fields.
+            </div>
+            <form id="addGoodForm" class="d-flex justify-content-center flex-column">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Enter amount" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight per Unit (kg)</label>
+                    <input type="number" step="0.01" class="form-control" id="weight" placeholder="Enter weight per unit" min="0.1" required>
+                </div>
+                <button type="submit" class="btn btn-primary align-self-center">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script defer src="js/model/good.js" type="module"></script>
+<script defer src="js/addPages.js" type="module"></script>
+</body>
+</html>

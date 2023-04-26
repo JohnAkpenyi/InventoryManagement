@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 
 import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity(name = "inventory_section")
+@DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class InventorySection {
 

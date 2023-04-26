@@ -6,15 +6,18 @@ import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
 @Entity(name = "inventory")
+@DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Inventory {
 
@@ -35,18 +38,6 @@ public class Inventory {
     @Getter
     @Setter
     private BigDecimal total_inventory_sales;
-
-    @Getter
-    @Setter
-    private Integer total_goods_ready_for_sale;
-
-    @Getter
-    @Setter
-    private Integer total_goods_in_progress;
-
-    @Getter
-    @Setter
-    private Integer total_goods_raw;
 
     //    @OneToMany(mappedBy = "inventory")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -75,5 +66,10 @@ public class Inventory {
 
     public Inventory() {
 
+    }
+
+    @Override
+    public String toString() {
+        return inventory_id + " " + max_goods + " " + amount_of_goods + "" + total_inventory_sales;
     }
 }

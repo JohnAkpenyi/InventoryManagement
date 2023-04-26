@@ -1,0 +1,15 @@
+#myChart{
+    width:50vw !important;
+    height:50vh !important;
+    margin: 5vh;
+    display: inline !important;
+}
+
+#totalSales{
+    text-align: center;
+}
+
+#sections{
+    margin: 5vh;
+}
+
