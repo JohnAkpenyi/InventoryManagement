@@ -39,7 +39,6 @@ public class InventorySectionController {
         inventorySectionRespository.deleteById(id);
     }
 
-
     @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
     public InventorySection update(@PathVariable Long id, @RequestBody @NotNull InventorySection inventorySection){
         InventorySection existingInventorySection = inventorySectionRespository.getReferenceById(id);

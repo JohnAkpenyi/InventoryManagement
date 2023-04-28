@@ -5,10 +5,10 @@
     <title>Inventory Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/goodsPage.css">
 </head>
 <body>
 
+<!--Nav bar with search bar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="row w-100">
@@ -18,7 +18,14 @@
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-center">
-                <span class="navbar-brand mb-0 h1">Goods</span>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchBar" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="searchGoods()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="col-4 d-flex justify-content-end">
                 <a class="navbar-brand" id="addGoodsPage" href="addGoods.html">
@@ -29,9 +36,7 @@
     </div>
 </nav>
 
-
-
-
+<!--Goods Table-->
 <table class="table">
     <thead class="thead-dark">
     <tr>
@@ -39,19 +44,27 @@
         <th scope="col">Units</th>
         <th scope="col">Weight Per Unit (kg)</th>
         <th scope="col">Total Weight (kg)</th>
-        <th scope="col">Edit/Delete Goods</th>
+        <th scope="col">Edit/Delete Goods/Sell Units</th>
     </tr>
     </thead>
     <tbody>
 
     </tbody>
+    <tbody>
+    <tr>
+        <td colspan="3"></td>
+        <td>
+            <button class="btn btn-danger" onclick="deleteInventorySection()">Delete Inventory Section</button>
+        </td>
+        <td colspan="1"></td>
+    </tr>
+    </tbody>
 </table>
 
-
+<script src="js/goodsPage.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script defer src="js/model/good.js" type="module"></script>
-<script defer src="js/goodsPage.js" type="module"></script>
+
 </body>
 </html>

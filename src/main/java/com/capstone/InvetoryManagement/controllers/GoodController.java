@@ -1,12 +1,10 @@
 package com.capstone.InvetoryManagement.controllers;
 
 import com.capstone.InvetoryManagement.models.Good;
-import com.capstone.InvetoryManagement.models.InventorySection;
 import com.capstone.InvetoryManagement.repositories.GoodRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -38,7 +36,6 @@ public class GoodController {
     public void delete(@PathVariable Long id){
         goodRepository.deleteById(id);
     }
-
 
     @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
     public Good update(@PathVariable Long id, @RequestBody @NotNull Good good){

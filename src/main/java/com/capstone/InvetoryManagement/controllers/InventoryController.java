@@ -2,19 +2,23 @@ package com.capstone.InvetoryManagement.controllers;
 
 import com.capstone.InvetoryManagement.models.Inventory;
 import com.capstone.InvetoryManagement.repositories.InventoryRepository;
-import com.fasterxml.jackson.annotation.JsonMerge;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.Map;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/v1/inventories")
@@ -31,6 +35,20 @@ public class InventoryController {
     @GetMapping
     @RequestMapping("{id}")
     public Inventory get(@PathVariable Long id){return inventoryRepository.getReferenceById(id);}
+
+    @GetMapping
+    @RequestMapping("/csv/{id}")
+    public ResponseEntity<Resource> generateCsv(@PathVariable Long id) throws IOException {
+        Inventory existingInventory = inventoryRepository.getReferenceById(id);
+        String fileName = "Inventory" + id.toString() + ".csv";
+
+        ByteArrayResource resource = InventoryCSVGenerator.generateCSV(existingInventory, fileName);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+
+        return ResponseEntity.ok().headers(headers).contentLength(resource.contentLength()).body(resource);
+    }
 
     @PostMapping
     public Inventory create(@RequestBody final Inventory inventory){
@@ -63,7 +81,7 @@ public class InventoryController {
             }
         }
 
-        return  inventoryRepository.saveAndFlush(existingInventory);
+        return inventoryRepository.saveAndFlush(existingInventory);
     }
 
 

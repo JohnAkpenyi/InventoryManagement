@@ -5,10 +5,10 @@
     <title>Inventory Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/inventoryHome.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
+<!--Nav bar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="row w-100">
@@ -26,11 +26,12 @@
 </nav>
 
 <div class="d-flex">
-
+    <!--Chart-->
     <div class="flex-grow-2">
         <canvas id="myChart"></canvas>
     </div>
 
+    <!--Sections in inventory-->
     <div id="sections" class="flex-grow-1">
         <h1 class="text-center" id="sectionsTitle"><u>Sections in inventory</u></h1>
         <div class="list-group">
@@ -41,18 +42,17 @@
 
 </div>
 
-
+<!--Total sales text-->
 <h1 id="totalSales"></h1>
 
+<!--Options-->
 <ul class="list-group list-group-horizontal">
-    <li class="list-group-item"><button type="button" class="btn btn-link" data-mdb-ripple-color="dark">Add New Section</button></li>
-    <li class="list-group-item"><button type="button" class="btn btn-link" data-mdb-ripple-color="dark">Generate Report</button></li>
-    <li class="list-group-item"><button type="button" class="btn btn-link" data-mdb-ripple-color="dark">Delete Inventory</button></li>
+    <li class="list-group-item"><button type="button" class="btn btn-link" data-mdb-ripple-color="dark" onclick="addNewSection()">Add New Section</button></li>
+    <li class="list-group-item"><button type="button" class="btn btn-link" data-mdb-ripple-color="dark" onclick="generateReport()">Generate Report</button></li>
+    <li class="list-group-item"><button type="button" class="btn btn-link" data-mdb-ripple-color="dark" onclick="deleteInventory()">Delete Inventory</button></li>
 </ul>
 
-<script defer src="js/model/inventory.js" type="module"></script>
-<script defer src="js/model/inventorySection.js" type="module"></script>
-<script defer src="js/inventoryHome.js" type="module"></script>
+<script src="js/inventoryHome.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
